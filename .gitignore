@@ -1,0 +1,67 @@
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*.pyo
+__pycache__/
+*.so
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+*.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyInstaller
+#  Often used to create standalone executables
+#  These files should not be tracked in the repository
+#  Ref: https://pyinstaller.readthedocs.io/en/stable/
+*.manifest
+*.spec
+
+# IDE / Editor directories
+.vscode/
+.idea/
+*.iml
+
+# MacOS files
+.DS_Store
+
+# Windows Installer files
+Thumbs.db
+
+# Coverage reports
+.coverage
+.coverage.*
+*.cover
+*.hypothesis/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Pytest cache
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Pylint reports
+pylint_report.txt
+pylint_global_variables.txt
+
+# Sphinx documentation
+docs/_build/
+build/
+
+# Environment variable files (often used for API keys, etc.)
+.env
+.env.*
