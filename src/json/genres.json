@@ -1,0 +1,110 @@
+{
+    "28": {
+        "name": "Action",
+        "type": "movie"
+    },
+    "12": {
+        "name": "Adventure",
+        "type": "movie"
+    },
+    "16": {
+        "name": "Animation",
+        "type": "movie,tv"
+    },
+    "35": {
+        "name": "Comedy",
+        "type": "movie,tv"
+    },
+    "80": {
+        "name": "Crime",
+        "type": "movie,tv"
+    },
+    "99": {
+        "name": "Documentary",
+        "type": "movie,tv"
+    },
+    "18": {
+        "name": "Drama",
+        "type": "movie,tv"
+    },
+    "10751": {
+        "name": "Family",
+        "type": "movie,tv"
+    },
+    "14": {
+        "name": "Fantasy",
+        "type": "movie"
+    },
+    "36": {
+        "name": "History",
+        "type": "movie"
+    },
+    "27": {
+        "name": "Horror",
+        "type": "movie"
+    },
+    "10402": {
+        "name": "Music",
+        "type": "movie"
+    },
+    "9648": {
+        "name": "Mystery",
+        "type": "movie,tv"
+    },
+    "10749": {
+        "name": "Romance",
+        "type": "movie"
+    },
+    "878": {
+        "name": "Science Fiction",
+        "type": "movie"
+    },
+    "10770": {
+        "name": "TV Movie",
+        "type": "movie"
+    },
+    "53": {
+        "name": "Thriller",
+        "type": "movie"
+    },
+    "10752": {
+        "name": "War",
+        "type": "movie"
+    },
+    "37": {
+        "name": "Western",
+        "type": "movie,tv"
+    },
+    "10759": {
+        "name": "Action & Adventure",
+        "type": "tv"
+    },
+    "10762": {
+        "name": "Kids",
+        "type": "tv"
+    },
+    "10763": {
+        "name": "News",
+        "type": "tv"
+    },
+    "10764": {
+        "name": "Reality",
+        "type": "tv"
+    },
+    "10765": {
+        "name": "Sci-Fi & Fantasy",
+        "type": "tv"
+    },
+    "10766": {
+        "name": "Soap",
+        "type": "tv"
+    },
+    "10767": {
+        "name": "Talk",
+        "type": "tv"
+    },
+    "10768": {
+        "name": "War & Politics",
+        "type": "tv"
+    }
+}
