@@ -1,6 +1,6 @@
 import json
 import os
-from api.endpoints.get_genre_list import get_genres_list
+from api.endpoints.fetch_genres import get_genres_list
 
 def extract_genre(genre_id):
     """Extracts genre name based on genre_id from the combined genres dictionary."""
@@ -10,11 +10,11 @@ def extract_genre(genre_id):
 
     # Check if the JSON file already exists
     if os.path.exists(file_path):
-        print(f"📂 Loading combined genres from {file_path}...")
+        print(f"Loading combined genres from {file_path}...")
         with open(file_path, "r", encoding="utf-8") as file:
             genres = json.load(file)
     else:
-        print(f"🌍 Fetching combined genres from API...")
+        print(f"Fetching combined genres from API...")
         genres = get_genres_list()
 
     # Find the genre name based on genre_id
@@ -25,5 +25,5 @@ def extract_genre(genre_id):
     if genre_id_str in genres:
         return genres[genre_id_str]["name"]
     else:
-        print(f"⚠️ Genre ID {genre_id} not found.")
+        print(f"Genre ID {genre_id} not found.")
         return None

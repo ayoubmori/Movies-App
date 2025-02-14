@@ -16,7 +16,7 @@ def get_genres_list():
         for genre in movie_genres:
             combined_genres[genre["id"]] = {"name": genre["name"], "type": "movie"}
     else:
-        print(f"⚠️ Failed to fetch movie genres: {movie_response.status_code}")
+        print(f"Failed to fetch movie genres: {movie_response.status_code}")
 
     # Fetch TV genres
     tv_url = f"{BASE_URL}{TV_GENRES}"
@@ -30,7 +30,7 @@ def get_genres_list():
             else:
                 combined_genres[genre["id"]] = {"name": genre["name"], "type": "tv"}
     else:
-        print(f"⚠️ Failed to fetch TV genres: {tv_response.status_code}")
+        print(f"Failed to fetch TV genres: {tv_response.status_code}")
 
     # Save the combined genres to a JSON file
     os.makedirs("src/json", exist_ok=True)
@@ -38,5 +38,5 @@ def get_genres_list():
     with open(file_path, "w", encoding="utf-8") as file:
         json.dump(combined_genres, file, indent=4, ensure_ascii=False)
 
-    print(f"✅ Combined genres saved to {file_path}")
+    print(f"Combined genres saved to {file_path}")
     return combined_genres

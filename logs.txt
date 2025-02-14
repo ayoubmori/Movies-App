@@ -1,0 +1,11 @@
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.1.193:8501
+
+https://api.themoviedb.org/3movie/1241982/recommendations
+Failed to fetch recommendations: 204
+None
+  Stopping...
+^C

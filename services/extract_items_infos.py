@@ -1,48 +1,40 @@
-from api.endpoints.get_items import get_items
-from datetime import date
-from pprint import pprint
 from api.endpoints.config import BASE_IMAGE_URL
 import streamlit as st
 
 @st.cache_resource()
-def extract_items_list(page, request_end):
-    print("in popular_items list fun ")
+def extract_items_list(results):
+    """Extracts relevant movie details from the API response."""
+    if not results:
+        return None
 
-    itms_list = []  # Initialize the list
-    results = get_items(page, request_end)
-    
-    if results :
-        st.session_state.data_items = results
-        # pprint(results)
-        for item in results:  # Ensure "results" key exists
-            popular_item_details = {}
-            # General Infos
-            
-            popular_item_details["id"] = item.get("id", "Unknown id")
-            popular_item_details["title"] = item.get("original_title",item.get("original_name", "No Title"))
-            popular_item_details["overview"] = item.get("overview", "Unknown Overview")
-            popular_item_details["original_language"] = item.get("original_language", "Unknown original_language")
-            popular_item_details["vote_average"] = item.get("vote_average", "Unknown vote_average")
-            
-            # genres
-            popular_item_details["genre_ids"] = item.get("genre_ids", "Unknown genre_ids")
-            
-            # Format date safely
-            popular_item_details["releaseDate"] = item.get("release_date", item.get("first_air_date",{}))
-            popular_item_details["releaseYear"] = popular_item_details["releaseDate"][:4] if popular_item_details["releaseDate"] else "Unknown"
-            
-            # poster image 
-            poster_path = item.get("poster_path", "")
-            backdrop_path = item.get("backdrop_path", "")
-            
-            popular_item_details["image_url"] = f"{BASE_IMAGE_URL}{poster_path}" if poster_path else "No Image Available"
-            popular_item_details["backdrop_url"] = f"{BASE_IMAGE_URL}{backdrop_path}" if backdrop_path else "No Image Available"
-            
-            if popular_item_details["image_url"]:
-                popular_item_details["image_caption"] = f"{popular_item_details["title"]} ({popular_item_details["releaseYear"]})"
-            else:
-                popular_item_details["image_caption"] = "No Caption"
+    items_list = []
 
-            itms_list.append(popular_item_details)
-        return itms_list[:24]
-    return None
+    for item in results:
+        item_details = {
+            "id": item.get("id", "Unknown id"),
+            "title": item.get("original_title", item.get("original_name", "No Title")),
+            "overview": item.get("overview", "Unknown Overview"),
+            "original_language": item.get("original_language", "Unknown"),
+            "vote_average": item.get("vote_average", 0.0),
+            "release_date": item.get("release_date", item.get("first_air_date", "Unknown")),
+        }
+
+        # Extract release year
+        item_details["release_year"] = (
+            item_details["release_date"][:4] if item_details["release_date"] else "Unknown"
+        )
+
+        # Extract genres
+        item_details["genre_ids"] = item.get("genre_ids", [])
+
+        # Extract poster and backdrop images
+        poster_path = item.get("poster_path", "")
+        backdrop_path = item.get("backdrop_path", "")
+
+        item_details["poster_url"] = f"{BASE_IMAGE_URL}{poster_path}" if poster_path else None
+        item_details["backdrop_url"] = f"{BASE_IMAGE_URL}{backdrop_path}" if backdrop_path else None
+        item_details["image_caption"] = f"{item_details['title']} ({item_details['release_year']})" if item_details["poster_url"] else "No Caption"
+
+        items_list.append(item_details)
+
+    return items_list[:24]  # Return only the first 24 items
