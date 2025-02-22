@@ -2,7 +2,7 @@ import requests
 import json
 import os
 from .config import HEADERS, BASE_URL
-from services.const import TV_GENRES, MOVIES_GENRES
+from api.endpoints.config import TV_GENRES, MOVIES_GENRES
 
 def get_genres_list():
     """Fetch genres for both movies and TV shows and combine them into a single dictionary."""

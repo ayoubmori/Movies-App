@@ -4,8 +4,20 @@
   Local URL: http://localhost:8501
   Network URL: http://192.168.1.193:8501
 
-https://api.themoviedb.org/3movie/1241982/recommendations
-Failed to fetch recommendations: 204
-None
+2025-02-15 15:23:40.941 Uncaught app execution
+Traceback (most recent call last):
+  File "C:\Users\hp\Desktop\analyse\Projects\MoviesDatabase API\venv\Lib\site-packages\streamlit\runtime\scriptrunner\exec_code.py", line 121, in exec_func_with_error_handling
+    result = func()
+             ^^^^^^
+  File "C:\Users\hp\Desktop\analyse\Projects\MoviesDatabase API\venv\Lib\site-packages\streamlit\runtime\scriptrunner\script_runner.py", line 591, in code_to_exec
+    exec(code, module.__dict__)
+  File "C:\Users\hp\Desktop\analyse\Projects\MoviesDatabase API\app\main.py", line 75, in <module>
+    main()
+  File "C:\Users\hp\Desktop\analyse\Projects\MoviesDatabase API\app\main.py", line 57, in main
+    display_selected_item()
+  File "C:\Users\hp\Desktop\analyse\Projects\MoviesDatabase API\app\components\display_items.py", line 24, in display_selected_item
+    if selected_item.get("number_of_episodes",0) <= 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<=' not supported between instances of 'NoneType' and 'int'
+{'id': 822119, 'title': 'Captain America: Brave New World', 'overview': 'After meeting with newly elected U.S. President Thaddeus Ross, Sam finds himself in the middle of an international incident. He must discover the reason behind a nefarious global plot before the true mastermind has the entire world seeing red.', 'original_language': 'en', 'vote_average': 6.2, 'release_date': '2025-02-12', 'number_of_episodes': None, 'release_year': '2025', 'genre_ids': [53, 28, 878], 'poster_url': 'https://image.tmdb.org/t/p/w500/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg', 'backdrop_url': 'https://image.tmdb.org/t/p/w500/ywe9S1cOyIhR5yWzK7511NuQ2YX.jpg', 'image_caption': 'Captain America: Brave New World (2025)'}
   Stopping...
-^C

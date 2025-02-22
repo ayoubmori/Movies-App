@@ -5,6 +5,7 @@ from .config import HEADERS, BASE_URL
 def fetch_item(request_end: str,id=1 ):
     """Fetch page of popular movies starting from the given page."""
     url = f"{BASE_URL}{request_end.format(id=id)}"
+    print(url)
     params = {"language": "en-US"}
     response = requests.get(
         url, headers=HEADERS, params=params

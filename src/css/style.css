@@ -1,0 +1,26 @@
+.stButton {
+    margin-top: 23px;
+}
+
+/* .stButton>button {
+    color: #4F8BF9;
+    /* color: #343434; */
+/* border-radius: 50%;
+    height: 3em;
+    width: 3em;
+} */
+.stHorizontalBlock .stButton>button:has(span) {
+    color: #4F8BF9;
+    border-radius: 50%;
+    height: 3em;
+    width: 3em;
+}
+
+.stHorizontalBlock .stButton>button:hover {
+    color: #4F8BF9;
+    border-color:#4F8BF9 ;
+}
+
+.stTextInput>div>div>input {
+    color: #F0F2F6;
+}
