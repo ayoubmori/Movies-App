@@ -9,15 +9,6 @@ def get_items(request_end: str, pages=1):
         raise ValueError(f"Invalid page value: {pages}. It must be an integer.")
 
     items_list = []
-    ## if you want to get items of multiple pages at the time
-    # for page in range(1, pages + 1):
-    #     results = fetch_items(request_end, page=page)
-    #     if results:  # Ensure results are not None or empty
-    #         items = extract_items_list(results,request_end)
-    #         if items:
-    #             items_list.extend(items)  # Append extracted items
-    # return items_list
-
     ## if you want items of one selected page
     results = fetch_items(request_end, page=pages)
     if results:  # Ensure results are not None or empty

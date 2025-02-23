@@ -3,7 +3,7 @@ from streamlit_navigation_bar import st_navbar
 
 def main_navbar():
     # Define navigation pages
-    PAGES = ["Trending","Movies","Top Rated", "TV Shows", "Upcoming"]
+    PAGES = ["Home","Trending","Movies","Top Rated", "TV Shows", "Upcoming"]
 
     # Navigation bar options
     nav_options = {
@@ -20,7 +20,7 @@ def main_navbar():
             "background-color": "rgb(47, 131, 248)",
         },
         "div": {
-            "max-width": "32rem",
+            "max-width": "47rem",
         },
         "span": {
             "border-radius": "0.5rem",

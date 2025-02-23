@@ -3,13 +3,14 @@ from utils.handle_content import handle_item_details, handle_main_content
 from app.components.navbar import main_navbar
 from app.components.search_box import search_box
 
+
 # Page Config
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
 
 # Initialize session state (first run only)
 if "current_page" not in st.session_state:
-    st.session_state.current_page = "Trending"
+    st.session_state.current_page = "Home"
 if "page" not in st.session_state:
     st.session_state.page = 1
 if "selected_item" not in st.session_state:
@@ -34,13 +35,34 @@ from api.endpoints.config import TRENDING_ALL
 from utils.display_items import display_backdrop_img_items
 from controllers.get_items import get_items
 
-# backdrop_area,space=st.columns([4,8])
-# with backdrop_area:
-#     items_list = get_items(TRENDING_ALL, st.session_state.page)
-#     display_backdrop_img_items(items_list)
+backdrop_area,space=st.columns([5,4])
+with backdrop_area:
+    items_list = get_items(TRENDING_ALL, st.session_state.page)
+    display_backdrop_img_items(items_list)
+    
+    
 
-items_list = get_items(TRENDING_ALL, st.session_state.page)
-display_backdrop_img_items(items_list)
+# skeleton_proto = SkeletonProto()
+# skeleton_placeholder = st._main._enqueue("skeleton", skeleton_proto)
+
+# Custom CSS to control skeleton dimensions
+skeleton_css = """
+<style>
+.st-emotion-cache-1p09q4s {
+    height: 17rem;
+    width: 12rem;
+}
+</style>
+"""
+
+# Inject custom CSS
+st.markdown(skeleton_css, unsafe_allow_html=True)
+
+
+
+
+# items_list = get_items(TRENDING_ALL, st.session_state.page)
+# display_backdrop_img_items(items_list)
 
 # Handle page content
 if st.session_state.selected_item:

@@ -138,7 +138,7 @@ def display_items(items_list=[]):
         titles=movie_titles,
         div_style={"display": "grid", "grid-template-columns": "repeat(8, 1fr)", "gap": "20px"},
         img_style={"width": "100%", "height": "auto", "border-radius": "5px"},
-        key=f"clicked_img-{movie_titles[0]}",  # Unique key for main items
+
     )
     
     # Handle the clicked image
