@@ -7,7 +7,6 @@ import streamlit as st
 def search_multi(query,request_end="/search/multi", page=1):
     
     url = f"{BASE_URL}{request_end}"
-    print(url)
     params = {"language": "en-US",
               'query': query,}
     response = requests.get(

@@ -20,7 +20,33 @@
     color: #4F8BF9;
     border-color:#4F8BF9 ;
 }
-
+[data-testid="stTextInputRootElement"]:focus-within .st-c1 {
+    border-top-color: #4F8BF9;
+  }
+  
+  [data-testid="stTextInputRootElement"]:focus-within .st-bz {
+    border-left-color: #4F8BF9;
+  }
+  
+  [data-testid="stTextInputRootElement"]:focus-within .st-c0 {
+    border-right-color: #4F8BF9;
+  }
+  
+  [data-testid="stTextInputRootElement"]:focus-within .st-c2 {
+    border-bottom-color: #4F8BF9;
+  }
+  
 .stTextInput>div>div>input {
     color: #F0F2F6;
+}
+
+
+.st-emotion-cache-1p09q4s {
+  height: 17rem;
+  width: 12rem;
+}
+
+
+.st-emotion-cache-vvhj9l {
+  padding-bottom: 20px;
 }

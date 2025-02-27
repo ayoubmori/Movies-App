@@ -3,6 +3,8 @@ from utils.display_items import display_items, display_selected_item,display_rec
 from api.endpoints.config import UPCOMING_MOVIES, DISCOVER_MOVIES, DISCOVER_TV, TOP_RATED, TRENDING_ALL
 from controllers.get_items import get_items, get_recommendations_items
 from utils.btn import navigate_pages_btn
+from app.components.backdrop import backdrop_slideshow
+from time import sleep
 
 def handle_item_details():
     """Display selected item and recommendations"""
@@ -13,12 +15,14 @@ def handle_item_details():
         items_list = get_recommendations_items(recommendation_request_end, 
             id=selected_item_id, 
             pages=1)
-        display_recomendation_items(items_list)
-        navigate_pages_btn()
+        display_recomendation_items(items_list[:17])
+        # navigate_pages_btn()
     else:
         st.warning("No recommendations available")
         
 def handle_home_content():
+    # backdrop slideshow
+    # backdrop_slideshow()
     sections = [
         ("Trending", TRENDING_ALL),
         ("Movies", DISCOVER_MOVIES),
@@ -30,6 +34,7 @@ def handle_home_content():
         display_skeleton_grid(rows=2, cols=8, container=container)
         items = get_items(category, st.session_state.page)
         if items:
+            sleep(0.5)
             st.header(title)
             container.empty()  # Remove skeletons
             display_items(items[:16])
@@ -47,16 +52,19 @@ def handle_main_content():
     if st.session_state.current_page == "Home":
         handle_home_content()
     else:
-        st.title(f"**{st.session_state.current_page}**")
+        container = st.empty()  # Placeholder for skeletons
+        display_skeleton_grid(rows=2, cols=8, container=container)
         items_list = get_items(page_to_endpoint[st.session_state.current_page],
             st.session_state.page)
-        display_items(items_list)
-        navigate_pages_btn()
+        if items_list:
+            sleep(0.5)
+            st.header(st.session_state.current_page)
+            container.empty()  # Remove skeletons
+            display_items(items_list)
+            navigate_pages_btn()
+        
     
-    
-    
-    
-    
+
 
 # Some code
 from streamlit.proto.Skeleton_pb2 import Skeleton as SkeletonProto
@@ -69,15 +77,3 @@ def display_skeleton_grid(rows, cols, container):
                 with col:
                     skeleton_proto = SkeletonProto()
                     st._main._enqueue("skeleton", skeleton_proto)
-
-# # Function to create a grid of images
-# def display_image_grid(image_urls, cols):
-#     """Display a grid of images."""
-#     for i in range(0, len(image_urls), cols):  # Iterate in steps of `cols`
-#         row_images = image_urls[i:i + cols]  # Get images for the current row
-#         columns = st.columns(cols)  # Create a row of columns
-#         for idx, col in enumerate(columns):
-#             if idx < len(row_images):  # Check if there's an image for this column
-#                 with col:
-#                     st.image(row_images[idx], use_column_width=True)  # Display image
-                    

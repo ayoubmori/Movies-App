@@ -20,7 +20,7 @@ def main_navbar():
             "background-color": "rgb(47, 131, 248)",
         },
         "div": {
-            "max-width": "47rem",
+            "max-width": "40rem",
         },
         "span": {
             "border-radius": "0.5rem",

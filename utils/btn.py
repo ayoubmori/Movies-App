@@ -8,12 +8,12 @@ def navigate_pages_btn():
     st.write("")
 
     with previous_col:
-        if st.button("<- Prev",key=str(random.uniform(1.0, 100.0))) and st.session_state.page > 1:
+        if st.button("<- Prev") and st.session_state.page > 1:
             st.session_state.page -= 1
             st.rerun()
 
     with next_col:
-        if st.button("Next ->",key=str(random.uniform(1.0, 100.0))):
+        if st.button("Next ->"):
             st.session_state.page += 1
             st.rerun()
 

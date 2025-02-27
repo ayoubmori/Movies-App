@@ -1,37 +1,33 @@
 import streamlit as st
-import random
 from st_clickable_images import clickable_images
 from utils.extract_genre import extract_genre
 from api.endpoints.config import FIND_MOVIE, FIND_TV
 from api.endpoints.config import MOVIE_RECOMMENDATION, TV_RECOMMENDATION
 from controllers.get_items import get_items, get_recommendations_items
 from controllers.get_item import get_item
-
+import streamlit.components.v1 as components
 
 def display_selected_item():
     """Displays the selected movie's details on a separate page."""
-    selected_movie = st.session_state.selected_movie
+    selected_item = st.session_state.selected_item
 
-    if selected_movie:
-        print(selected_movie.get("id", 0), "  ", selected_movie.get("title", 0))
+    if selected_item:
         # Add a "Back" button to return to the main page
         if st.button("<-- Back"):
-            st.session_state.selected_movie = None
+            st.session_state.selected_item = None
             st.session_state.recommendation_clicked = False  # Reset recommendation flag
             st.rerun()
 
-        selected_item_id = int(selected_movie.get("id", 0))
+        selected_item_id = int(selected_item.get("id", 0))
 
         # Determine the request endpoints based on the selected item type
-        request_end_value = selected_movie.get("request_end", "").lower()
+        request_end_value = selected_item.get("request_end", "").lower()
         if "/tv" in request_end_value:
             find_request_end = FIND_TV
             recommendation_request_end = TV_RECOMMENDATION
         else:
             find_request_end = FIND_MOVIE
             recommendation_request_end = MOVIE_RECOMMENDATION
-
-        print(find_request_end, "  ", recommendation_request_end)
 
         # Fetch and display item details
         item_info = get_item(request_end=find_request_end, id=selected_item_id)
@@ -101,8 +97,8 @@ def display_recomendation_items(items_list=[]):
 
     # Handle the clicked image
     if clicked_index > -1:
-        selected_movie = items_list[clicked_index]
-        st.session_state.selected_movie = selected_movie
+        selected_item = items_list[clicked_index]
+        st.session_state.selected_item = selected_item
         st.session_state.recommendation_clicked = True  # Set recommendation flag
         st.rerun()  # Rerun the app to display the selected item page
 
@@ -143,16 +139,14 @@ def display_items(items_list=[]):
     
     # Handle the clicked image
     if clicked_index > -1:
-        selected_movie = items_list[clicked_index]
-        st.session_state.selected_movie = selected_movie
+        selected_item = items_list[clicked_index]
+        st.session_state.selected_item = selected_item
         st.session_state.recommendation_clicked = False  # Reset recommendation flag
         st.rerun()  # Rerun the app to display the selected item page
-
-
         
         
+########################""""
 from streamlit_carousel import carousel
-from app.components.search_box import local_css
 def display_backdrop_img_items(items_list=[]):
     """Displays a carousel of clickable movie/TV show backdrop images."""
 
@@ -198,6 +192,31 @@ def display_backdrop_img_items(items_list=[]):
     # local_css("src/css/style.css")
 
     # Display the carousel
-    carousel(items=carousel_items, fade=True, controls=True,container_height=100,interval=3500,indicators=False)
+    carousel(items=carousel_items, fade=True, controls=True,interval=4300,indicators=False)
     
 
+
+
+
+def display_search_result(results):
+    if st.button("back"):
+        st.session_state.search_results = None
+        st.session_state.searching = False
+        st.rerun()
+    if results :
+        if results["movies"]:
+            st.subheader("🎥 Movies")
+            display_items(results["movies"])
+
+        if results["tv_shows"]:
+            st.subheader("📺 TV Shows")
+            display_items(results["tv_shows"])
+
+        # if results["people"]:
+        #     st.subheader("🧑 People")
+        #     items_list = display_search_results(results["people"])
+        #     for person in items_list:
+        #         st.write(f"🎭 **{person['name']}** (ID: {person['id']})")
+
+    else:
+        st.write("❌ No results found.")
