@@ -46,5 +46,4 @@ def main_navbar():
     options=nav_options,
     key="main_navbar",
     )
-    
     return current_page

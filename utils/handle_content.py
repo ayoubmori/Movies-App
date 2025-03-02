@@ -15,7 +15,7 @@ def handle_item_details():
         items_list = get_recommendations_items(recommendation_request_end, 
             id=selected_item_id, 
             pages=1)
-        display_recomendation_items(items_list[:17])
+        display_recomendation_items(items_list[:16])
         # navigate_pages_btn()
     else:
         st.warning("No recommendations available")
@@ -48,20 +48,29 @@ def handle_main_content():
         "TV Shows": DISCOVER_TV,
         "Upcoming": UPCOMING_MOVIES,
     }
+    previous_container = st.container()
     
     if st.session_state.current_page == "Home":
         handle_home_content()
     else:
         container = st.empty()  # Placeholder for skeletons
+        
+        if st.session_state.previous_page != st.session_state.current_page : 
+            st.session_state.previous_page = st.session_state.current_page
+            previous_container.empty()
+            
         display_skeleton_grid(rows=2, cols=8, container=container)
         items_list = get_items(page_to_endpoint[st.session_state.current_page],
             st.session_state.page)
+        
         if items_list:
-            sleep(0.5)
-            st.header(st.session_state.current_page)
+            sleep(3)
             container.empty()  # Remove skeletons
-            display_items(items_list)
-            navigate_pages_btn()
+            previous_container = st.container()
+            with previous_container :
+                st.header(st.session_state.current_page)
+                display_items(items_list)
+                navigate_pages_btn()
         
     
 

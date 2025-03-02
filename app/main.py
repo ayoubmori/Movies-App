@@ -11,7 +11,7 @@ st.set_page_config(page_title="Movie app",layout="wide", initial_sidebar_state="
 # Initialize session state (first run only)
 if "current_page" not in st.session_state:
     st.session_state.current_page = "Home"
-    
+    st.session_state.previous_page = "Home"
 if "page" not in st.session_state:
     st.session_state.page = 1
 if "selected_item" not in st.session_state:
@@ -33,8 +33,6 @@ if current_page != st.session_state.current_page:
    
 # search box
 search_box()
-
-
 
 # Handle page content
 if st.session_state.selected_item:
