@@ -1,6 +1,4 @@
 import streamlit as st
-import random
-
 
 def navigate_pages_btn():
     # Pagination buttons and current page display

@@ -26,8 +26,6 @@ def extract_items_list(results,request_end):
             item_details["release_date"][:4] if item_details["release_date"] else "Unknown"
         )
 
-        # Extract genres
-        # item_details["genre_ids"] = item.get("genre_ids", [])
 
         # Extract poster and backdrop images
         poster_path = item.get("poster_path", "")

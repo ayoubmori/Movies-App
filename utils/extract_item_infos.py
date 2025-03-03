@@ -32,28 +32,26 @@ def extract_item_info(results):
     genres = results.get("genres", [])
     item_details["genres"] = [genre["name"] for genre in genres] if genres else ["Unknown"]
 
-    # # Collection Info
-    # collection = results.get("belongs_to_collection", {})
-    # item_details["collection_name"] = collection.get("name", "No Collection")
-    # item_details["collection_poster"] = f"{BASE_IMAGE_URL}{collection.get('poster_path', '')}" if collection.get("poster_path") else None
-    # item_details["collection_backdrop"] = f"{BASE_IMAGE_URL}{collection.get('backdrop_path', '')}" if collection.get("backdrop_path") else None
-
     # Image Paths
     poster_path = results.get("poster_path", "")
     backdrop_path = results.get("backdrop_path", "")
     item_details["poster_url"] = f"{BASE_IMAGE_URL}{poster_path}" if poster_path else None
     item_details["backdrop_url"] = f"{BASE_IMAGE_URL}{backdrop_path}" if backdrop_path else None
-
-    # # Production Companies
-    # production_companies = results.get("production_companies", [])
-    # item_details["production_companies"] = [company["name"] for company in production_companies] if production_companies else ["Unknown"]
-
-    # # Production Countries
-    # production_countries = results.get("production_countries", [])
-    # item_details["production_countries"] = [country["name"] for country in production_countries] if production_countries else ["Unknown"]
-
+    
     # Spoken Languages
     spoken_languages = results.get("spoken_languages", [])
     item_details["spoken_languages"] = [lang["english_name"] for lang in spoken_languages] if spoken_languages else ["Unknown"]
 
     return item_details
+
+
+def extract_item_images(results):
+    images_path_list = []
+    
+    for result in results:
+        image_path = result.get("file_path",None)
+        if image_path:
+            image_path = f"{BASE_IMAGE_URL}{image_path}"
+            images_path_list.append(image_path)
+    
+    return images_path_list

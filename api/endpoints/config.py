@@ -1,5 +1,4 @@
 import os
-import requests
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -38,3 +37,7 @@ FIND_TV = "/tv/{id}"
 #search
 SEARCH_KEYWORD = "/search/keyword"
 SEARCH_MULTI = "/search/multi"
+
+#item images 
+MOVIE_IMAGES ="/movie/{id}/images"
+TV_IMAGES = "/tv/{id}/images"

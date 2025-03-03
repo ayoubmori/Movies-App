@@ -3,7 +3,6 @@ from utils.display_items import display_items, display_selected_item,display_rec
 from api.endpoints.config import UPCOMING_MOVIES, DISCOVER_MOVIES, DISCOVER_TV, TOP_RATED, TRENDING_ALL
 from controllers.get_items import get_items, get_recommendations_items
 from utils.btn import navigate_pages_btn
-from app.components.backdrop import backdrop_slideshow
 from time import sleep
 
 def handle_item_details():
@@ -21,8 +20,6 @@ def handle_item_details():
         st.warning("No recommendations available")
         
 def handle_home_content():
-    # backdrop slideshow
-    # backdrop_slideshow()
     sections = [
         ("Trending", TRENDING_ALL),
         ("Movies", DISCOVER_MOVIES),
