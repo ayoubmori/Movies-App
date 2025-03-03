@@ -72,9 +72,6 @@ python -m streamlit run app/main.py
 ## 🤝 Contributing
 Feel free to submit issues or feature requests. Pull requests are welcome!
 
-## 📜 License
-This project is licensed under the **MIT License**.
-
 ---
 Made with ❤️ by Ayoub Taouabi
 
